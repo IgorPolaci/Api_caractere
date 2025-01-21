@@ -5,8 +5,8 @@ app = Flask(__numero__)
 # Base de números
 base_numeros = ["5511998765432", "5511987654321", "5511976543210"]
 
-@app.route('/validar-numero', methods=['POST'])
-def validar_numero():
+@app.route('/validar-cidade', methods=['POST'])
+def validar_cidade():
     dados = request.json
     numero = dados.get("numero")
     
