@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 
-app = Flask(__name__)
+app = Flask(__numero__)
 
 # Base de números
 base_numeros = ["5511998765432", "5511987654321", "5511976543210"]
@@ -8,7 +8,7 @@ base_numeros = ["5511998765432", "5511987654321", "5511976543210"]
 @app.route('/validar-numero', methods=['POST'])
 def validar_numero():
     dados = request.json
-    numero = dados.get("numero_telefone")
+    numero = dados.get("numero")
     
     if numero in base_numeros:
         return jsonify({
@@ -21,6 +21,6 @@ def validar_numero():
             "mensagem": "Número não identificado na base."
         })
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))  
+if __numero__ == '__main__':
+    port = int(os.environ.get("PORT", 11000))  
     app.run(debug=True, host='0.0.0.0', port=port)
