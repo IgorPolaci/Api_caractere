@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Base de números
-base_numeros = ["AFRÂNIO - PE",
+# Base de cidade
+base_cidade = ["AFRÂNIO - PE",
 "ÁGUAS LINDAS DE GOIÁS - GO",
 "ALFENAS - MG",
 "ALTA FLORESTA - MT",
@@ -327,17 +327,17 @@ base_numeros = ["AFRÂNIO - PE",
 @app.route('/validar-cidade', methods=['POST'])
 def validar_cidade():
     dados = request.json
-    numero = dados.get("numero")
+    cidade = dados.get("cidade")
     
-    if numero in base_numeros:
+    if cidade in base_cidade:
         return jsonify({
             "status": "Encontrado",
-            "mensagem": "Número identificado para atendimento diferenciado."
+            "mensagem": "Cidade identificada para atendimento."
         })
     else:
         return jsonify({
             "status": "Nao_encontrado",
-            "mensagem": "Número não identificado na base."
+            "mensagem": "Cidade não identificada na base."
         })
 
 if __name__ == '__main__':
