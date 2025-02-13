@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from rapidfuzz import process
 
 app = Flask(__name__)
 
@@ -12,13 +13,22 @@ base_cursos = {
 @app.route('/obter-link', methods=['POST'])
 def obter_link():
     dados = request.json
-    curso = dados.get("curso")
+    curso_input = dados.get("curso")
     
-    if curso in base_cursos:
+if not curso_input:
+        return jsonify({
+            "status": "Erro",
+            "mensagem": "Nenhum curso foi enviado."
+        })
+    
+    melhor_curso, score, _ = process.extractOne(curso_input, base_cursos.keys())
+    
+    if score > 80:  # Define um limite para considerar uma correspondência válida
         return jsonify({
             "status": "Encontrado",
             "mensagem": "Curso identificado.",
-            "link": base_cursos[curso]
+            "curso": melhor_curso,
+            "link": base_cursos[melhor_curso]
         })
     else:
         return jsonify({
