@@ -15,7 +15,7 @@ def obter_link():
     dados = request.json
     curso_input = dados.get("curso")
     
-if not curso_input:
+    if not curso_input:
         return jsonify({
             "status": "Erro",
             "mensagem": "Nenhum curso foi enviado."
