@@ -199,7 +199,7 @@ def obter_link():
     
     melhor_curso, score, _ = process.extractOne(curso_input, base_cursos.keys())
     
-    if score > 80:  # Define um limite para considerar uma correspondência válida
+    if score > 85:  # Define um limite para considerar uma correspondência válida
         return jsonify({
             "status": "Encontrado",
             "mensagem": "Curso identificado.",
