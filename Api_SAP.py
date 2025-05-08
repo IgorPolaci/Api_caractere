@@ -16,8 +16,8 @@ def limpa_caracteres():
         })
 
     # Remove acentos e transforma em minúsculas
-    Cidade = unidecode.unidecode(cidade).lower()
-    Estado = unidecode.unidecode(estado).lower()
+    Cidade = unidecode.unidecode(Cidade).lower()
+    Estado = unidecode.unidecode(Estado).lower()
 
     return jsonify({
         "status": "Sucesso",
