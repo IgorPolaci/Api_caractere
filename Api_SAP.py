@@ -12,17 +12,17 @@ def limpa_caracteres():
     if not cidade or not estado:
         return jsonify({
             "status": "Erro",
-            "mensagem": "Nenhum texto foi enviado."
+            "mensagem": "Os campos 'cidade' e 'estado' são obrigatórios."
         })
 
-    # Remove acentos e transforma em minúsculas
-    Cidade = unidecode.unidecode(Cidade).lower().replace(" ", "-")
-    Estado = unidecode.unidecode(Estado).lower()
+    # Remove acentos, transforma em minúsculas e substitui espaços por traços
+    cidade_tratada = unidecode.unidecode(cidade).lower().replace(" ", "-")
+    estado_tratado = unidecode.unidecode(estado).lower()
 
     return jsonify({
         "status": "Sucesso",
-        "CIdade_tratado": Cidade
-        "Estado_tratado": Estado
+        "cidade_tratada": cidade_tratada,
+        "estado_tratado": estado_tratado
     })
 
 @app.route('/', methods=['GET'])
