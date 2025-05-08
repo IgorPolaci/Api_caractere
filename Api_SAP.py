@@ -6,20 +6,23 @@ app = Flask(__name__)
 @app.route('/limpa_caracteres', methods=['POST'])
 def limpa_caracteres():
     dados = request.json
-    texto = dados.get("texto")
+    cidade = dados.get("cidade")
+    estado = dados.get("estado")
 
-    if not texto:
+    if not cidade or not estado:
         return jsonify({
             "status": "Erro",
             "mensagem": "Nenhum texto foi enviado."
         })
 
     # Remove acentos e transforma em minúsculas
-    texto_tratado = unidecode.unidecode(texto).lower()
+    Cidade = unidecode.unidecode(cidade).lower()
+    Estado = unidecode.unidecode(estado).lower()
 
     return jsonify({
         "status": "Sucesso",
-        "texto_tratado": texto_tratado
+        "CIdade_tratado": Cidade
+        "Estado_tratado": Estado
     })
 
 if __name__ == '__main__':
