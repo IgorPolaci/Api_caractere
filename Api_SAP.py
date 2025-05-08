@@ -25,6 +25,10 @@ def limpa_caracteres():
         "Estado_tratado": Estado
     })
 
+@app.route('/', methods=['GET'])
+def ping():
+    return jsonify({"status": "ok", "mensagem": "API ativa"}), 200
+
 if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 11000))
